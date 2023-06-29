@@ -1,0 +1,37 @@
+import random
+
+def adivinhe_o_numero():
+    numero_secreto = random.randint(1, 100)
+    numero_tentativas = 10
+    tentativas_feitas = 0
+
+    print("Bem-vindo ao jogo Adivinhe o Número!")
+    print("Tente adivinhar o número secreto entre 1 e 100.")
+
+    while tentativas_feitas < numero_tentativas:
+        tentativa = int(input("Digite a sua suposição: "))
+
+        if tentativa < 1 or tentativa > 100:
+            print("Por favor, digite um número entre 1 e 100.")
+            continue
+
+        tentativas_feitas += 1
+
+        if tentativa < numero_secreto:
+            print("O número correto é maior do que a sua suposição.")
+        elif tentativa > numero_secreto:
+            print("O número correto é menor do que a sua suposição.")
+        else:
+            print("Parabéns! Você acertou o número!")
+            print("Número de tentativas: ", tentativas_feitas)
+            break
+
+    if tentativas_feitas == numero_tentativas:
+        print("Você esgotou o número de tentativas.")
+        print("O número correto era:", numero_secreto)
+
+    jogar_novamente = input("Deseja jogar novamente? (s/n): ")
+    if jogar_novamente.lower() == "s":
+        adivinhe_o_numero()
+
+adivinhe_o_numero()
